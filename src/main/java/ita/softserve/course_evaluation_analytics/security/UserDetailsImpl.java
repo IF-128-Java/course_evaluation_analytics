@@ -32,7 +32,7 @@ public class UserDetailsImpl implements UserDetails {
                 true, getAuthorities(user.getRoles()));
     }
 
-    private static List<SimpleGrantedAuthority> getAuthorities(Set<Role> roles) {
+    private static List<SimpleGrantedAuthority> getAuthorities(List<Role> roles) {
         return roles.stream().map(Role::getPermissions).flatMap(Collection::stream)
                 .map(permission -> new SimpleGrantedAuthority(permission.name()))
                 .collect(Collectors.toList());

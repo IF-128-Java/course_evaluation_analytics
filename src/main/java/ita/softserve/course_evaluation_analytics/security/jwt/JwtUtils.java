@@ -22,11 +22,11 @@ import java.util.Base64;
 public class JwtUtils {
 
 
-    @Value("course_evaluation")
+    @Value("${jwt.secret}")
     private String jwtKey;
-    @Value("Authorization")
+    @Value("${jwt.header}")
     private String header;
-    @Value("Bearer")
+    @Value("${jwt.authentication_scheme}")
     private String authenticationScheme;
     private final UserDetailsService userDetailsService;
 
