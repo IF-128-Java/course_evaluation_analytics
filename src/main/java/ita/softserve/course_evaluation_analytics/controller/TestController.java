@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/analytics/test")
 public class TestController {
     @GetMapping
-    public ResponseEntity.BodyBuilder testEndpoint() {
-        return ResponseEntity.status(HttpStatus.OK);
+    public ResponseEntity<?> testEndpoint() {
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 }
