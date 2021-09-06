@@ -6,4 +6,5 @@ import lombok.Data;
 public class UserRoles {
     private long userId;
     private long roleId;
+    private String roleName;
 }
