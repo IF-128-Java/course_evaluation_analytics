@@ -2,9 +2,7 @@ package ita.softserve.course_evaluation_analytics.repository.impl;
 
 import ita.softserve.course_evaluation_analytics.entity.Role;
 import ita.softserve.course_evaluation_analytics.entity.Users;
-import ita.softserve.course_evaluation_analytics.entity.UsersCounter;
 import ita.softserve.course_evaluation_analytics.mapper.RoleRowMapper;
-import ita.softserve.course_evaluation_analytics.mapper.UserCounterMapper;
 import ita.softserve.course_evaluation_analytics.mapper.UsersMapper;
 import ita.softserve.course_evaluation_analytics.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;

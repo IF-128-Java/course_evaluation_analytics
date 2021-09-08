@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/analytics")
+@RequestMapping("api/v1/admin/analytics")
 public class UsersCounterController {
 
     private final UsersCounterService usersCounterService;

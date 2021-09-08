@@ -1,8 +1,6 @@
 package ita.softserve.course_evaluation_analytics.mapper;
 
-import ita.softserve.course_evaluation_analytics.entity.Users;
 import ita.softserve.course_evaluation_analytics.entity.UsersCounter;
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
