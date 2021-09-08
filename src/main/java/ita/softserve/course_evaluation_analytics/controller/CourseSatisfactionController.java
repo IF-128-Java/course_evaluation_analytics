@@ -20,7 +20,7 @@ public class CourseSatisfactionController {
        this.courseSatisfactionService = courseSatisfactionService; }
 
 
-    public ResponseEntity<List<CourseFeedbackSatisfaction>> getAllCoursesatisfation(){
+    public ResponseEntity<List<CourseFeedbackSatisfaction>> getAllCoursesatisfaction(){
         return ResponseEntity.status(HttpStatus.OK).body(courseSatisfactionService.getSatisfactions());
     }
 
