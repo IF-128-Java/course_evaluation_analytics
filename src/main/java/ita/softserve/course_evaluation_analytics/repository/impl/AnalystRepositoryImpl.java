@@ -20,7 +20,7 @@ public class AnalystRepositoryImpl implements AnalystRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public void setDataSource( DataSource dataSource) {
+    public void setDataSource(@Qualifier("datasource") DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
