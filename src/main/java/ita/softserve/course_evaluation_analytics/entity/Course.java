@@ -12,10 +12,9 @@ import java.util.List;
    @AllArgsConstructor
 public class Course {
 
-
-    private long id;
+       private long id;
 
     private String courseName;
 
-    private List<FeedbackRequest> feedbackRequest;
+    //private List<FeedbackRequest> feedbackRequest;
 }

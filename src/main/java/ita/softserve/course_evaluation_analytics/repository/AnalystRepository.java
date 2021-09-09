@@ -8,9 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class AnalystRepository {
+public interface AnalystRepository {
 
-        public List<Course> getAllCourses(){ return null; }
+        public List<Course> getAllCourses();
 
-        public Integer getRate(Course course, FeedbackRequest feedbackRequest) {return null;}
+        public List<FeedbackRequest> getFeedbackRequestByCourse(long id);
+
+        public Integer getRate(FeedbackRequest feedbackRequest) ;
 }

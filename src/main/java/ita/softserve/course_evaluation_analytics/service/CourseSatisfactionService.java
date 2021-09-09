@@ -16,26 +16,52 @@ import java.util.List;
 
 public class CourseSatisfactionService {
 
-      AnalystRepository analystRepository;
+    AnalystRepository analystRepository;
 
-      CourseSatisfactionService(AnalystRepository analystRepository){
-          this.analystRepository=analystRepository;
-      }
+    CourseSatisfactionService(AnalystRepository analystRepository) {
+        this.analystRepository = analystRepository;
+    }
 
-    public List<CourseFeedbackSatisfaction> getSatisfactions(){
+    public List<CourseFeedbackSatisfaction> getSatisfactions() {
 
         List<CourseFeedbackSatisfaction> coursesFeedbackSatisfaction = null;
 
-        List <Course> courses = analystRepository.getAllCourses();
+        List<Course> courses = analystRepository.getAllCourses();
 
-      /*   for (Course course : courses) {
-            for(FeedbackRequest feedbackRequest : course.getFeedbackRequest()) {
-                          Integer rate = analystRepository.getRate(course, feedbackRequest);
-                          coursesFeedbackSatisfaction.add(new CourseFeedbackSatisfaction((int) course.getId(), feedbackRequest.getId(), rate));
+        for (Course course : courses) {
+            List<FeedbackRequest> feedbackRequests = analystRepository.getFeedbackRequestByCourse(course.getId());
+
+            for (FeedbackRequest feedbackRequest : feedbackRequests) {
+                Integer rate = analystRepository.getRate( feedbackRequest);
+                assert false;
+                coursesFeedbackSatisfaction.add(new CourseFeedbackSatisfaction(course.getCourseName(), feedbackRequest.getFeedbackDescription(), rate));
             }
-*/
-        return new ArrayList<CourseFeedbackSatisfaction>((Collection<? extends CourseFeedbackSatisfaction>) new CourseFeedbackSatisfaction("Sql", "literatura", 5));
 
+
+        }
+        return coursesFeedbackSatisfaction;
+        
     }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//return new ArrayList<CourseFeedbackSatisfaction>((Collection<? extends CourseFeedbackSatisfaction>) new CourseFeedbackSatisfaction("Sql", "literatura", 5));
