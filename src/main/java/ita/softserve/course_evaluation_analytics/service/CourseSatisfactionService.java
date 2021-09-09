@@ -22,11 +22,13 @@ public class CourseSatisfactionService {
         this.analystRepository = analystRepository;
     }
 
+    List<CourseFeedbackSatisfaction> coursesFeedbackSatisfaction=new ArrayList<CourseFeedbackSatisfaction>();
+
     public List<CourseFeedbackSatisfaction> getSatisfactions() {
 
-        List<CourseFeedbackSatisfaction> coursesFeedbackSatisfaction = null;
+       coursesFeedbackSatisfaction.clear();
 
-        List<Course> courses = analystRepository.getAllCourses();
+       /* List<Course> courses = analystRepository.getAllCourses();
 
         for (Course course : courses) {
             List<FeedbackRequest> feedbackRequests = analystRepository.getFeedbackRequestByCourse(course.getId());
@@ -38,8 +40,11 @@ public class CourseSatisfactionService {
             }
 
 
-        }
+        }*/
+
+        coursesFeedbackSatisfaction.add(new CourseFeedbackSatisfaction("Sql", "literatura", 5));
         return coursesFeedbackSatisfaction;
+        //return new ArrayList((Collection<? extends CourseFeedbackSatisfaction>) new CourseFeedbackSatisfaction("Sql", "literatura", 5));
         
     }
 }
@@ -64,4 +69,3 @@ public class CourseSatisfactionService {
 
 
 
-//return new ArrayList<CourseFeedbackSatisfaction>((Collection<? extends CourseFeedbackSatisfaction>) new CourseFeedbackSatisfaction("Sql", "literatura", 5));
