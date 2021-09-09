@@ -5,6 +5,7 @@ import ita.softserve.course_evaluation_analytics.entity.UsersCounter;
 import ita.softserve.course_evaluation_analytics.mapper.UserCounterMapper;
 import ita.softserve.course_evaluation_analytics.repository.UsersCounterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +18,7 @@ public class UsersCounterRepositoryImpl implements UsersCounterRepository {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Autowired
-    public void setDataSource(final DataSource dataSource) {
+    public void setDataSource(@Qualifier("datasource") final DataSource dataSource) {
         namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
