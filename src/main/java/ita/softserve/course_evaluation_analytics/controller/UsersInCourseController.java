@@ -1,6 +1,5 @@
 package ita.softserve.course_evaluation_analytics.controller;
 
-import ita.softserve.course_evaluation_analytics.entity.UsersCounter;
 import ita.softserve.course_evaluation_analytics.entity.UsersInCourse;
 import ita.softserve.course_evaluation_analytics.service.UsersInCourseService;
 import org.springframework.http.HttpStatus;

@@ -8,11 +8,11 @@ public class UsersInCourse {
     public UsersInCourse() {
     }
 
-    public UsersInCourse(String courseName, Long usersInCourse) {
+    public UsersInCourse(String courseName, Long coursesUsers) {
         this.courseName = courseName;
-        this.usersInCourse = usersInCourse;
+        this.coursesUsers = coursesUsers;
     }
 
     private String courseName;
-    private Long usersInCourse;
+    private Long coursesUsers;
 }
