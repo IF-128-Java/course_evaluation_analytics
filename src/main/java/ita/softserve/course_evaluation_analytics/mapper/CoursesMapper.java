@@ -19,7 +19,7 @@ import java.sql.SQLException;
             Course course = new Course();
 
             course.setId(resultSet.getLong("id"));
-            course.setCourseName(resultSet.getString("first_name"));
+            course.setCourseName(resultSet.getString("course_name"));
 
             return course;
         }

@@ -28,23 +28,24 @@ public class CourseSatisfactionService {
 
        coursesFeedbackSatisfaction.clear();
 
-       /* List<Course> courses = analystRepository.getAllCourses();
-
+        List<Course> courses = analystRepository.getAllCourses();
+        System.out.print(courses);
         for (Course course : courses) {
             List<FeedbackRequest> feedbackRequests = analystRepository.getFeedbackRequestByCourse(course.getId());
 
-            for (FeedbackRequest feedbackRequest : feedbackRequests) {
-                Integer rate = analystRepository.getRate( feedbackRequest);
-                assert false;
-                coursesFeedbackSatisfaction.add(new CourseFeedbackSatisfaction(course.getCourseName(), feedbackRequest.getFeedbackDescription(), rate));
-            }
+                if(!feedbackRequests.isEmpty()) {
+                    for (FeedbackRequest feedbackRequest : feedbackRequests) {
+                        Integer rate = analystRepository.getRate(feedbackRequest);
+                        System.out.print(rate);
+                        coursesFeedbackSatisfaction.add(new CourseFeedbackSatisfaction(course.getCourseName(), feedbackRequest.getFeedbackDescription(), rate));
+                    }
+                }
+                   else  coursesFeedbackSatisfaction.add(new CourseFeedbackSatisfaction("", "", 0 ));
+        }
 
-
-        }*/
-
-        coursesFeedbackSatisfaction.add(new CourseFeedbackSatisfaction("Sql", "literatura", 5));
+        //coursesFeedbackSatisfaction.add(new CourseFeedbackSatisfaction("Sql", "literatura", 5));
         return coursesFeedbackSatisfaction;
-        //return new ArrayList((Collection<? extends CourseFeedbackSatisfaction>) new CourseFeedbackSatisfaction("Sql", "literatura", 5));
+
         
     }
 }
