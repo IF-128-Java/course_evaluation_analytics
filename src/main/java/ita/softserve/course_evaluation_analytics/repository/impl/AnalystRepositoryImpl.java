@@ -45,13 +45,14 @@ public class AnalystRepositoryImpl implements AnalystRepository {
     }
 
     @Override
-    public Integer getRate(FeedbackRequest feedbackRequest) {
-        String SQL = "SELECT AVG(atf.rate) FROM answer_to_feedbacks atf"+
+    public Integer getRate( long id) {
+        BigDecimal bigDecId = new BigDecimal(id);
+        String SQL = "SELECT AVG(atf.rate) FROM answer_to_feedbacks atf "+
                 "INNER JOIN course_feedback cf ON atf.feedback_id=cf.id "+
-                "INNER JOIN course_feedback_request cfr ON cf.feedback_request_id=cfr.id"+
-                "WHERE cfr.id=:feedbackRequest";
+                "INNER JOIN course_feedback_request cfr ON cf.feedback_request_id=cfr.id "+
+                "WHERE cfr.id=?";
 
-        return jdbcTemplate.queryForObject(SQL, Integer.class );
+        return jdbcTemplate.queryForObject(SQL, new Object[] { bigDecId }, Integer.class );
     }
 
 }
