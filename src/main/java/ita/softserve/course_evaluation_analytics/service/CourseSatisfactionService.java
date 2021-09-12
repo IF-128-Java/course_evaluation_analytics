@@ -29,15 +29,15 @@ public class CourseSatisfactionService {
        coursesFeedbackSatisfaction.clear();
 
         List<Course> courses = analystRepository.getAllCourses();
-        System.out.print(courses);
+
         for (Course course : courses) {
             List<FeedbackRequest> feedbackRequests = analystRepository.getFeedbackRequestByCourse(course.getId());
-               System.out.print(feedbackRequests);
+
                 if(!feedbackRequests.isEmpty()) {
                     for (FeedbackRequest feedbackRequest : feedbackRequests) {
                         Integer rate = analystRepository.getRate(feedbackRequest.getId());
                         if(rate==null){rate=0;}
-                        System.out.print(rate);
+
                         coursesFeedbackSatisfaction.add(new CourseFeedbackSatisfaction(course.getCourseName(), feedbackRequest.getFeedbackDescription(), rate));
                     }
                 }
