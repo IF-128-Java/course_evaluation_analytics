@@ -44,7 +44,7 @@ public class CourseSatisfactionService {
                    else  coursesFeedbackSatisfaction.add(new CourseFeedbackSatisfaction("", "", 0 ));
         }
 
-        //coursesFeedbackSatisfaction.add(new CourseFeedbackSatisfaction("Sql", "literatura", 5));
+
         return coursesFeedbackSatisfaction;
 
         

@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("api/v1/coursesatisfaction")
 public class CourseSatisfactionController {
 
-    CourseSatisfactionService courseSatisfactionService;
+    private final CourseSatisfactionService courseSatisfactionService;
 
     CourseSatisfactionController(CourseSatisfactionService courseSatisfactionService) {
        this.courseSatisfactionService = courseSatisfactionService; }

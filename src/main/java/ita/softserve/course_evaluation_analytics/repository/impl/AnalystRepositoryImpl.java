@@ -35,6 +35,16 @@ public class AnalystRepositoryImpl implements AnalystRepository {
 
 
     }
+
+    @Override
+    public List <FeedbackRequest>getFeedbackRequests(){
+
+        String SQL = "SELECT cfr.id, cfr.feedback_description FROM course_feedback_request cfr ";
+
+        return jdbcTemplate.query(SQL, new FeedbackRequestMapper() );
+
+    }
+
     @Override
     public List <FeedbackRequest>getFeedbackRequestByCourse(long id){
         BigDecimal bigDecId = new BigDecimal(id);
