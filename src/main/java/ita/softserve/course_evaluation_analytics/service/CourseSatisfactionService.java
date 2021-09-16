@@ -13,7 +13,6 @@ import java.util.List;
 
 
 @Service
-
 public class CourseSatisfactionService {
 
     AnalystRepository analystRepository;
@@ -21,8 +20,6 @@ public class CourseSatisfactionService {
     CourseSatisfactionService(AnalystRepository analystRepository) {
         this.analystRepository = analystRepository;
     }
-
-
 
     public List<CourseFeedbackSatisfaction> getSatisfactions() {
 
