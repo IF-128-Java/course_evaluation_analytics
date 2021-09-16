@@ -13,15 +13,15 @@ import java.util.List;
 @Service
 public class FeedbackSatisfactionService {
 
-      AnalystRepository analystRepository;
+      private final AnalystRepository analystRepository;
 
          FeedbackSatisfactionService(AnalystRepository analystRepository) {
                 this.analystRepository = analystRepository;
     }
 
-      List<FeedbackSatisfaction> feedbackSatisfaction=new ArrayList<FeedbackSatisfaction>();
+
       public List<FeedbackSatisfaction> getSatisfaction (){
-                     feedbackSatisfaction.clear();
+          List<FeedbackSatisfaction> feedbackSatisfaction=new ArrayList<FeedbackSatisfaction>();
                   List<FeedbackRequest> feedbackRequests = analystRepository.getFeedbackRequests();
 
                   if(!feedbackRequests.isEmpty()) {

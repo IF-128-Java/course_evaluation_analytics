@@ -25,11 +25,11 @@ public class SpringConfig {
 
     @Bean
     public NamedParameterJdbcTemplate getJdbcTemplate() {
-        return new NamedParameterJdbcTemplate(getDataSource());
+        return new NamedParameterJdbcTemplate(datasource());
     }
 
-    @Bean ("datasource")
-    public DataSource getDataSource() {
+    @Bean
+    public DataSource datasource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driver);
         dataSource.setUrl(dbUrl);

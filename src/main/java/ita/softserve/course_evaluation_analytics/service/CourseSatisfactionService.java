@@ -22,11 +22,11 @@ public class CourseSatisfactionService {
         this.analystRepository = analystRepository;
     }
 
-    List<CourseFeedbackSatisfaction> coursesFeedbackSatisfaction=new ArrayList<CourseFeedbackSatisfaction>();
+
 
     public List<CourseFeedbackSatisfaction> getSatisfactions() {
 
-       coursesFeedbackSatisfaction.clear();
+        List<CourseFeedbackSatisfaction> coursesFeedbackSatisfaction=new ArrayList<CourseFeedbackSatisfaction>();
 
         List<Course> courses = analystRepository.getAllCourses();
 
@@ -50,24 +50,3 @@ public class CourseSatisfactionService {
         
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
