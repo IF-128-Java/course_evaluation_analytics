@@ -5,6 +5,7 @@ import ita.softserve.course_evaluation_analytics.entity.UsersFeedbacks;
 import ita.softserve.course_evaluation_analytics.mapper.GroupsCoursesResultSetExtractor;
 import ita.softserve.course_evaluation_analytics.mapper.UsersFeedbacksResultSetExtractor;
 import ita.softserve.course_evaluation_analytics.repository.ComplexChartRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -13,14 +14,10 @@ import javax.sql.DataSource;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class ComplexChartRepositoryImpl implements ComplexChartRepository {
 
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
-    @Autowired
-    public void setDataSource(final DataSource dataSource) {
-        namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-    }
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
     public List<GroupsCourses> getCoursesInGroups() {
