@@ -35,18 +35,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .build();
         return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
     }
-
-//    @ExceptionHandler({EntityNotFoundException.class})
-//    public ResponseEntity<GenericExceptionResponse> handleEntityNotFoundException(EntityNotFoundException exception) {
-//        GenericExceptionResponse dto = GenericExceptionResponse.builder()
-//                .message(exception.getMessage())
-//                .status(HttpStatus.NOT_FOUND.value())
-//                .error(exception.getClass().getSimpleName())
-//                .build();
-//
-//        return new ResponseEntity<>(dto, HttpStatus.NOT_FOUND);
-//    }
-
     @ExceptionHandler({NotEmptyGroupException.class})
     public ResponseEntity<GenericExceptionResponse> handleNotEmptyGroupException(NotEmptyGroupException exception) {
         GenericExceptionResponse dto = GenericExceptionResponse.builder()
@@ -57,20 +45,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
     }
-
-//    @ExceptionHandler({ConstraintViolationException.class})
-//    public ResponseEntity<GenericExceptionResponse> handleConstraintViolationFoundException(ConstraintViolationException exception) {
-//        GenericExceptionResponse dto = GenericExceptionResponse.builder()
-//                .message(exception.getConstraintViolations().stream()
-//                        .map(ConstraintViolation::getMessageTemplate)
-//                        .collect(Collectors.joining()))
-//                .status(HttpStatus.BAD_REQUEST.value())
-//                .error(exception.getClass().getSimpleName())
-//                .build();
-//
-//        return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
-//    }
-
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         GenericExceptionResponse dto = GenericExceptionResponse.builder()
