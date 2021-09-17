@@ -7,10 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class GroupsCoursesResultSetExtractor implements RowMapper<GroupsCourses> {
+    private static final String ID = "id";
+    private static final String GROUP_NAME = "group_name";
+    private static final String GROUPS_COURSES = "groups_courses";
     @Override
     public GroupsCourses mapRow(ResultSet resultSet, int i) throws SQLException {
-        return new GroupsCourses(resultSet.getLong("id"),
-                resultSet.getString("group_name"),
-                resultSet.getLong("groups_courses"));
+        return new GroupsCourses(resultSet.getLong(ID),
+                resultSet.getString(GROUP_NAME),
+                resultSet.getLong(GROUPS_COURSES));
     }
 }
