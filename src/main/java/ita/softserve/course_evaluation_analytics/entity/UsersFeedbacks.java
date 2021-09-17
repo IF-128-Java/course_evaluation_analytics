@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsersFeedbacks {
-    private String last_name;
-    private String first_name;
-    private long courses_feedbacks;
-    private long group_id;
+    private String lastName;
+    private String firstName;
+    private long coursesFeedbacks;
+    private long groupId;
 }

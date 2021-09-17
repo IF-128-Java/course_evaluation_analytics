@@ -10,14 +10,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GroupsCourses {
-    public GroupsCourses(long id, String group_name, long groups_courses) {
+    public GroupsCourses(long id, String groupName, long groupsCourses) {
         this.id = id;
-        this.group_name = group_name;
-        this.groups_courses = groups_courses;
+        this.groupName = groupName;
+        this.groupsCourses = groupsCourses;
     }
 
     private long id;
-    private String group_name;
-    private long groups_courses;
-    private List<UsersFeedbacks> users_feedbacks;
+    private String groupName;
+    private long groupsCourses;
+    private List<UsersFeedbacks> usersFeedbacks;
 }
