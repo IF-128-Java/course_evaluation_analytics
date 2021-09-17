@@ -1,0 +1,39 @@
+package ita.softserve.course_evaluation_analytics.repository.impl;
+
+import ita.softserve.course_evaluation_analytics.entity.GroupsCourses;
+import ita.softserve.course_evaluation_analytics.entity.UsersFeedbacks;
+import ita.softserve.course_evaluation_analytics.mapper.GroupsCoursesMapper;
+import ita.softserve.course_evaluation_analytics.mapper.UserCounterMapper;
+import ita.softserve.course_evaluation_analytics.mapper.UsersFeedbacksMapper;
+import ita.softserve.course_evaluation_analytics.repository.ComplexChartRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import javax.sql.DataSource;
+import java.util.List;
+
+@Repository
+public class ComplexChartRepositoryImpl implements ComplexChartRepository {
+
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+    @Autowired
+    public void setDataSource(final DataSource dataSource) {
+        namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+    }
+
+    @Override
+    public List<GroupsCourses> getCoursesInGroups() {
+        String sql = "SELECT id, group_name, COUNT(cg.course_id) AS groups_courses FROM groups INNER JOIN " +
+                "course_group cg on groups.id = cg.group_id group by id";
+        return namedParameterJdbcTemplate.query(sql, new GroupsCoursesMapper());
+    }
+
+    @Override
+    public List<UsersFeedbacks> getFeedbacksFromUser() {
+        String sql = "SELECT last_name, first_name, COUNT(cf.student_id) AS courses_feedbacks, group_id FROM users u " +
+                "LEFT JOIN course_feedback cf on u.id = cf.student_id WHERE group_id NOTNULL group by u.id";
+        return namedParameterJdbcTemplate.query(sql, new UsersFeedbacksMapper());
+    }
+}
