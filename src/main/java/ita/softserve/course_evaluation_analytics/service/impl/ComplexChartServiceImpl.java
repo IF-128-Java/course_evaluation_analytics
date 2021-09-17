@@ -17,8 +17,8 @@ public class ComplexChartServiceImpl implements ComplexChartService {
 
     public List<GroupsCourses> countGroupsCoursesAndUsersFeedbacks() {
         List<GroupsCourses> groupsCoursesList = complexChartRepository.getCoursesInGroups();
+        List<UsersFeedbacks> usersFeedbacksList = complexChartRepository.getFeedbacksFromUser();
         for (GroupsCourses groupsCourses : groupsCoursesList) {
-            List<UsersFeedbacks> usersFeedbacksList = complexChartRepository.getFeedbacksFromUser();
             List<UsersFeedbacks> filteredList =  usersFeedbacksList.stream()
                     .filter(o -> o.getGroupId() == groupsCourses.getId())
                     .collect(Collectors.toList());

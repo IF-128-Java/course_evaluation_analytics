@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class GroupsCoursesMapper implements RowMapper<GroupsCourses> {
+public class GroupsCoursesResultSetExtractor implements RowMapper<GroupsCourses> {
     @Override
     public GroupsCourses mapRow(ResultSet resultSet, int i) throws SQLException {
         return new GroupsCourses(resultSet.getLong("id"),

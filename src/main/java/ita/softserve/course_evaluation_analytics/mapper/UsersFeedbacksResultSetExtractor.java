@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UsersFeedbacksMapper implements RowMapper<UsersFeedbacks> {
+public class UsersFeedbacksResultSetExtractor implements RowMapper<UsersFeedbacks> {
     @Override
     public UsersFeedbacks mapRow(ResultSet resultSet, int i) throws SQLException {
         return new UsersFeedbacks(resultSet.getString("last_name"),
