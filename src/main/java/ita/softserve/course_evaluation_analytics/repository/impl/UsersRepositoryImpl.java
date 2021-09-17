@@ -6,14 +6,12 @@ import ita.softserve.course_evaluation_analytics.mapper.RoleRowMapper;
 import ita.softserve.course_evaluation_analytics.mapper.UsersMapper;
 import ita.softserve.course_evaluation_analytics.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
 
