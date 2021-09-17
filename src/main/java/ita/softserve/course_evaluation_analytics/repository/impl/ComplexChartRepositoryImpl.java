@@ -6,11 +6,9 @@ import ita.softserve.course_evaluation_analytics.mapper.GroupsCoursesResultSetEx
 import ita.softserve.course_evaluation_analytics.mapper.UsersFeedbacksResultSetExtractor;
 import ita.softserve.course_evaluation_analytics.repository.ComplexChartRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 @Repository
