@@ -18,7 +18,7 @@ public class ComplexChartController {
     private final ComplexChartServiceImpl complexChartService;
 
     @GetMapping
-    private ResponseEntity<List<GroupsCourses>> getCoursesAndFeedbacksNumberInGroups() {
+    public ResponseEntity<List<GroupsCourses>> getCoursesAndFeedbacksNumberInGroups() {
         return ResponseEntity.status(HttpStatus.OK).body(complexChartService.countGroupsCoursesAndUsersFeedbacks());
     }
 }

@@ -3,7 +3,6 @@ package ita.softserve.course_evaluation_analytics.repository.impl;
 import ita.softserve.course_evaluation_analytics.entity.GroupsCourses;
 import ita.softserve.course_evaluation_analytics.entity.UsersFeedbacks;
 import ita.softserve.course_evaluation_analytics.mapper.GroupsCoursesMapper;
-import ita.softserve.course_evaluation_analytics.mapper.UserCounterMapper;
 import ita.softserve.course_evaluation_analytics.mapper.UsersFeedbacksMapper;
 import ita.softserve.course_evaluation_analytics.repository.ComplexChartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
