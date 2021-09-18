@@ -59,7 +59,9 @@ public class JwtUtils {
     }
 
     public String getToken(HttpServletRequest req) {
+
         String token = req.getHeader(header);
+
         if (token != null && token.startsWith(authenticationScheme)) {
             return token.substring(authenticationScheme.length());
         }

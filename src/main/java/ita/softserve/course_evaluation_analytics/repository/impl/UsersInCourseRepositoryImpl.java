@@ -4,16 +4,25 @@ import ita.softserve.course_evaluation_analytics.entity.UsersInCourse;
 import ita.softserve.course_evaluation_analytics.mapper.UsersInCourseMapper;
 import ita.softserve.course_evaluation_analytics.repository.UsersInCourseRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 @Repository
-@RequiredArgsConstructor
 public class UsersInCourseRepositoryImpl implements UsersInCourseRepository {
 
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+    @Autowired
+    public void setDataSource(@Qualifier("datasource") final DataSource dataSource) {
+        namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+    }
+
 
     @Override
     public List<UsersInCourse> countUsersInCourse() {
