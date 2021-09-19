@@ -26,13 +26,13 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 	}
 	
 	@Override
-	public Optional<Integer> getTeachersRate(Long teacherId) {
+	public Optional<Float> getTeachersRate(Long teacherId) {
 		String sql = "SELECT AVG(atf.rate) FROM answer_to_feedbacks atf " +
 				             "INNER JOIN course_feedback cf ON atf.feedback_id=cf.id " +
 				             "INNER JOIN course_feedback_request cfr ON cf.feedback_request_id=cfr.id " +
 				             "INNER JOIN course c ON c.id = cfr.course_id WHERE c.teacher_id = :id";
 		SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", teacherId);
-		return Optional.ofNullable(namedParameterJdbcTemplate.queryForObject(sql, namedParameters, Integer.class));
+		return Optional.ofNullable(namedParameterJdbcTemplate.queryForObject(sql, namedParameters, Float.class));
 	}
 	
 	@Override

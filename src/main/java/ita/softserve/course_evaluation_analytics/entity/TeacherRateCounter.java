@@ -13,5 +13,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TeacherRateCounter {
 	private String teacher;
-	private long teacherRate;
+	private float teacherRate;
 }

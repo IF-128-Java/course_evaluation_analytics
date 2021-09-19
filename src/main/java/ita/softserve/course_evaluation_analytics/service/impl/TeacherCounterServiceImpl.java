@@ -30,9 +30,9 @@ public class TeacherCounterServiceImpl implements TeacherCounterService {
 		return teacherRateCounters;
 	}
 	
-	private Integer getTeachersRate(Long teacherId) {
-		Optional<Integer> optionalInteger = teacherRepository.getTeachersRate(teacherId);
-		return optionalInteger.orElse(0);
+	private Float getTeachersRate(Long teacherId) {
+		Optional<Float> optional = teacherRepository.getTeachersRate(teacherId);
+		return optional.orElse(0f);
 	}
 	
 	private String getTeacherName(Long teacherId) {

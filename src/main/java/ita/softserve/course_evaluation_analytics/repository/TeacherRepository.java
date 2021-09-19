@@ -8,6 +8,6 @@ import java.util.Optional;
 @Repository
 public interface TeacherRepository {
 	
-	Optional<Integer> getTeachersRate(Long teacherId);
+	Optional<Float> getTeachersRate(Long teacherId);
 	List<Long> getAllTeacher();
 }
