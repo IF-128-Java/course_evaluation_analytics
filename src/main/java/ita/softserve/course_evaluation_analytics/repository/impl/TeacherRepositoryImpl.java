@@ -1,6 +1,7 @@
 package ita.softserve.course_evaluation_analytics.repository.impl;
 
 import ita.softserve.course_evaluation_analytics.repository.TeacherRepository;
+import ita.softserve.course_evaluation_analytics.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,6 +19,7 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 	
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	private JdbcTemplate jdbcTemplate;
+	private UsersRepository usersRepository;
 	
 	@Autowired
 	public void setDataSource(@Qualifier("datasource") final DataSource dataSource) {
@@ -41,4 +43,10 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 		return jdbcTemplate.queryForList(sql, Long.class);
 	}
 	
+	@Override
+	public List<Long> getAllTeacherCourses(Long teacherId) {
+		String sql = "SELECT c.id FROM course as c WHERE teacher_id = :id";
+		SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", teacherId);
+		return namedParameterJdbcTemplate.queryForList(sql, namedParameters, Long.class);
+	}
 }

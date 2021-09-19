@@ -10,4 +10,5 @@ public interface TeacherRepository {
 	
 	Optional<Float> getTeachersRate(Long teacherId);
 	List<Long> getAllTeacher();
+	List<Long> getAllTeacherCourses(Long teacherId);
 }

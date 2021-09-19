@@ -26,8 +26,12 @@ public class TeacherCounterServiceImpl implements TeacherCounterService {
 	public List<TeacherRateCounter> getTeacherRate() {
 		List<Long> teacherIds = teacherRepository.getAllTeacher();
 		List<TeacherRateCounter> teacherRateCounters = new ArrayList<>();
-		teacherIds.forEach(teacherId -> teacherRateCounters.add(new TeacherRateCounter(getTeacherName(teacherId), getTeachersRate(teacherId))));
+		teacherIds.forEach(teacherId -> teacherRateCounters.add(new TeacherRateCounter(getTeacherName(teacherId), getTeacherCourses(teacherId), getTeachersRate(teacherId))));
 		return teacherRateCounters;
+	}
+	
+	private List<Long> getTeacherCourses(Long teacherId) {
+		return teacherRepository.getAllTeacherCourses(teacherId);
 	}
 	
 	private Float getTeachersRate(Long teacherId) {
