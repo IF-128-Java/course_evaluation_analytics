@@ -18,7 +18,7 @@ public class ChatsMessagesController {
     private final ChatsMessagesService chatsMessagesService;
 
     @GetMapping
-    ResponseEntity<List<ChatsMessages>> getListOfMessagesByDays() {
+    public ResponseEntity<List<ChatsMessages>> getListOfMessagesByDays() {
         return ResponseEntity.status(HttpStatus.OK).body(chatsMessagesService.getListOfMessagesByDays());
     }
 }
