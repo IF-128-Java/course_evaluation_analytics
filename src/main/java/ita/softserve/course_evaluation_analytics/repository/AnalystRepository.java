@@ -16,5 +16,9 @@ public interface AnalystRepository {
 
         public List<FeedbackRequest> getFeedbackRequestByCourse(long id);
 
+        List <FeedbackRequest>getFeedbackRequestByCourseAndMonth(long id, int month, int year);
+
         public Integer getRate(long id) ;
+
+
 }
