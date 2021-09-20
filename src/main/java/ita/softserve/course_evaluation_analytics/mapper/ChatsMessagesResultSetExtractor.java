@@ -14,7 +14,7 @@ public class ChatsMessagesResultSetExtractor implements RowMapper<ChatsMessages>
 
     @Override
     public ChatsMessages mapRow(ResultSet resultSet, int i) throws SQLException {
-        return new ChatsMessages(resultSet.getDate(DAYS),
+        return new ChatsMessages(resultSet.getTimestamp(DAYS).toLocalDateTime(),
                 resultSet.getLong(TEACHERS_MESSAGES),
                 resultSet.getLong(GROUPS_MESSAGES));
     }

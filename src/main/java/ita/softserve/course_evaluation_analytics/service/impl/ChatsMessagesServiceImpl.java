@@ -4,16 +4,16 @@ import ita.softserve.course_evaluation_analytics.entity.ChatsMessages;
 import ita.softserve.course_evaluation_analytics.repository.ChatsMessagesRepository;
 import ita.softserve.course_evaluation_analytics.service.ChatsMessagesService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
+@Service
 @RequiredArgsConstructor
 public class ChatsMessagesServiceImpl implements ChatsMessagesService {
     private final ChatsMessagesRepository chatsMessagesRepository;
     @Override
-    public List<ChatsMessages> getListOfCountedMessagesByDays() {
+    public List<ChatsMessages> getListOfMessagesByDays() {
         return chatsMessagesRepository.getListOfMessagesByDays();
     }
 }
