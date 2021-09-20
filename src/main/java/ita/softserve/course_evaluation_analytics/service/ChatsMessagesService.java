@@ -7,5 +7,5 @@ import java.util.List;
 
 @Service
 public interface ChatsMessagesService {
-    List<ChatsMessages> countMessagesByDays();
+    List<ChatsMessages> getListOfCountedMessagesByDays();
 }

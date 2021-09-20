@@ -13,7 +13,7 @@ import java.util.List;
 public class ChatsMessagesServiceImpl implements ChatsMessagesService {
     private final ChatsMessagesRepository chatsMessagesRepository;
     @Override
-    public List<ChatsMessages> countMessagesByDays() {
-        return chatsMessagesRepository.getNumberOfMessagesByDay();
+    public List<ChatsMessages> getListOfCountedMessagesByDays() {
+        return chatsMessagesRepository.getListOfMessagesByDays();
     }
 }

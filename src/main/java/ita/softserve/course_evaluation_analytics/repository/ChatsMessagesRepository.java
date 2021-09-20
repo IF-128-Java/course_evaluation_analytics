@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface ChatsMessagesRepository {
-    List<ChatsMessages> getNumberOfMessagesByDay();
+    List<ChatsMessages> getListOfMessagesByDays();
 }

@@ -19,6 +19,6 @@ public class ChatsMessagesController {
 
     @GetMapping
     ResponseEntity<List<ChatsMessages>> getNumberOfMessagesByDays() {
-        return ResponseEntity.status(HttpStatus.OK).body(chatsMessagesService.countMessagesByDays());
+        return ResponseEntity.status(HttpStatus.OK).body(chatsMessagesService.getListOfCountedMessagesByDays());
     }
 }
