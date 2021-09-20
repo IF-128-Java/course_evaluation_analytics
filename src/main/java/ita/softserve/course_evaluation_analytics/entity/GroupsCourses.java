@@ -1,5 +1,7 @@
 package ita.softserve.course_evaluation_analytics.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,9 +17,14 @@ public class GroupsCourses {
         this.groupName = groupName;
         this.coursesInGroup = coursesInGroup;
     }
-
+    @JsonIgnore
     private long id;
+    @JsonProperty("x")
     private String groupName;
+    @JsonProperty("y")
     private long coursesInGroup;
+    @JsonProperty("color")
+    private String COLOR = "#03884c";
+    @JsonProperty("quarters")
     private List<UsersFeedbacks> usersFeedbacks;
 }
