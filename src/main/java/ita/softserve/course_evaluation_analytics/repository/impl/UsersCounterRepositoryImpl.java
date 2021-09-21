@@ -14,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UsersCounterRepositoryImpl implements UsersCounterRepository {
 
+
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     public List<UsersCounter> countUserRoles() {

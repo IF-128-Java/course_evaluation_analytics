@@ -6,6 +6,7 @@ import ita.softserve.course_evaluation_analytics.mapper.RoleRowMapper;
 import ita.softserve.course_evaluation_analytics.mapper.UsersMapper;
 import ita.softserve.course_evaluation_analytics.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -22,7 +23,7 @@ public class UsersRepositoryImpl implements UsersRepository {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Autowired
-    public void setDataSource(final DataSource dataSource) {
+    public void setDataSource(@Qualifier("datasource") final DataSource dataSource) {
         namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
