@@ -55,6 +55,17 @@ public class AnalystRepositoryImpl implements AnalystRepository {
     }
 
     @Override
+    public List <FeedbackRequest>getFeedbackRequestByCourseAndMonth(long id, int month, int year){
+        BigDecimal bigDecId = new BigDecimal(id);
+        Integer monthDb = new Integer(month);
+        Integer yearDb = new Integer(year);
+        String SQL = "SELECT cfr.id, cfr.feedback_description FROM course_feedback_request cfr "+
+                "WHERE cfr.course_id = ? AND YEAR(cfr.start_date)=?2 AND MONTH(cfr.start_date)=?1 OR MONTH(cfr.end_date)=?1 ";
+        return jdbcTemplate.query(SQL, new Object[] { bigDecId, monthDb, yearDb }, new FeedbackRequestMapper() );
+
+    }
+
+    @Override
     public Integer getRate( long id) {
         BigDecimal bigDecId = new BigDecimal(id);
         String SQL = "SELECT AVG(atf.rate) FROM answer_to_feedbacks atf "+
@@ -64,5 +75,7 @@ public class AnalystRepositoryImpl implements AnalystRepository {
 
         return jdbcTemplate.queryForObject(SQL, new Object[] { bigDecId }, Integer.class );
     }
+
+
 
 }
