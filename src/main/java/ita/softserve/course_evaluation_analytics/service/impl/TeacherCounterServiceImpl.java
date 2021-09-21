@@ -33,16 +33,12 @@ public class TeacherCounterServiceImpl implements TeacherCounterService {
 	
 	@Override
 	public TeacherRateCounter getTeacherRate(long teacherId) {
-		return new TeacherRateCounter(teacherId, getTeacherName(teacherId), getTeacherCourses(teacherId), getTeachersRate(teacherId));
+		return new TeacherRateCounter(teacherId, getTeacherName(teacherId), getTeachersRate(teacherId));
 	}
 	
 	@Override
 	public List<TeacherQuestionRate> getQuestionPatternRateByTeacherId(long teacherId) {
 		return teacherRepository.getQuestionPatternRateByTeacherId(teacherId);
-	}
-	
-	private List<Long> getTeacherCourses(Long teacherId) {
-		return teacherRepository.getAllTeacherCourses(teacherId);
 	}
 	
 	private Float getTeachersRate(Long teacherId) {
