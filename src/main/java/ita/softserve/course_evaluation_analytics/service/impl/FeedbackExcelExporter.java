@@ -86,7 +86,7 @@ public class FeedbackExcelExporter {
             createCell(row, columnCount++, feedbackInfo.getFeedbackDescription(), style);
             createCell(row, columnCount++, feedbackInfo.getStartDate(), style);
             createCell(row, columnCount++, feedbackInfo.getEndDate(), style);
-            createCell(row, columnCount++, feedbackInfo.getStatus().toString(), style);
+            createCell(row, columnCount++, feedbackInfo.getStatus(), style);
             createCell(row, columnCount++, feedbackInfo.getCourseName(), style);
             createCell(row, columnCount++, feedbackInfo.getQuestionText(), style);
             createCell(row, columnCount++, feedbackInfo.getRate(), style);
@@ -100,10 +100,9 @@ public class FeedbackExcelExporter {
         writeHeaderLine();
         writeDataLines();
 
-        log.info(filePath);
         File currDir = new File(filePath);
         String path = currDir.getAbsolutePath();
-        String fileLocation = path.substring(0, path.length() - 1) + "feedbackInfo-"+feedbackInfos.get(0).getCourseName()+".xlsx";
+        String fileLocation = path + "\\feedbackInfo-"+feedbackInfos.get(0).getCourseName()+".xlsx";
 
         FileOutputStream outputStream2 = new FileOutputStream(fileLocation);
         workbook.write(outputStream2);

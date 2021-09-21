@@ -5,6 +5,10 @@ import ita.softserve.course_evaluation_analytics.repository.FeedbackInfoReposito
 import ita.softserve.course_evaluation_analytics.service.impl.FeedbackExcelExporter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +27,7 @@ public class FeedbackInfoController {
     private final FeedbackInfoRepository feedbackInfoRepository;
 
     @GetMapping("/{course_id}/export/excel")
-    public void exportToExcel(HttpServletResponse response, @PathVariable("course_id") long courseId, @RequestParam String filePath) throws IOException {
+    public ResponseEntity<?> exportToExcel(HttpServletResponse response, @PathVariable("course_id") long courseId, @RequestParam String filePath) throws IOException {
 
 
         response.setContentType("application/octet-stream");
@@ -39,8 +43,11 @@ public class FeedbackInfoController {
 
         FeedbackExcelExporter excelExporter = new FeedbackExcelExporter(feedbackInfoList);
 
-        excelExporter.export(response, filePath);
+        byte[] returnResponse = excelExporter.export(response, filePath).toByteArray();
         log.info("export excel");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.parseMediaType("application/vnd.ms-excel"));
+        return new ResponseEntity<byte[]>(returnResponse,headers, HttpStatus.OK);
     }
 
 }
