@@ -21,13 +21,13 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class FeedbackExcelExporter {
+public class FeedbackExcelExporterServiceImpl {
 
     private final XSSFWorkbook workbook;
     private XSSFSheet sheet;
     private final List<FeedbackInfo> feedbackInfos;
 
-    public FeedbackExcelExporter(List<FeedbackInfo> feedbackInfoList) {
+    public FeedbackExcelExporterServiceImpl(List<FeedbackInfo> feedbackInfoList) {
         this.feedbackInfos = feedbackInfoList;
         workbook = new XSSFWorkbook();
     }
@@ -52,6 +52,7 @@ public class FeedbackExcelExporter {
         createCell(row, 6, "Rate", style);
         createCell(row, 7, "Student ID", style);
         createCell(row, 8, "Student Email", style);
+
     }
 
     private void createCell(Row row, int columnCount, Object value, CellStyle style) {
@@ -96,16 +97,10 @@ public class FeedbackExcelExporter {
         }
     }
 
-    public ByteArrayOutputStream export(HttpServletResponse response, String filePath) throws IOException {
+    public ByteArrayOutputStream export(HttpServletResponse response) throws IOException {
         writeHeaderLine();
         writeDataLines();
 
-        File currDir = new File(filePath);
-        String path = currDir.getAbsolutePath();
-        String fileLocation = path + "\\feedbackInfo-"+feedbackInfos.get(0).getCourseName()+".xlsx";
-
-        FileOutputStream outputStream2 = new FileOutputStream(fileLocation);
-        workbook.write(outputStream2);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         workbook.write(baos);
 
