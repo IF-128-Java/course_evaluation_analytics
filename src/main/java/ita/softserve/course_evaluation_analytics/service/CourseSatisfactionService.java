@@ -69,7 +69,7 @@ public class CourseSatisfactionService {
 
 
                 }
-                avarageRate = sumRates/i;
+                avarageRate = sumRates/n;
                 courseSatisfactionByMonth.add(new CourseSatisfactionByMonth(temperary.getMonth().toString(), avarageRate));
             }
               else  courseSatisfactionByMonth.add(new CourseSatisfactionByMonth(temperary.getMonth().toString(), 0));
