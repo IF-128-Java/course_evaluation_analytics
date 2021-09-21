@@ -1,5 +1,6 @@
 package ita.softserve.course_evaluation_analytics.service.impl;
 
+import ita.softserve.course_evaluation_analytics.entity.TeacherQuestionRate;
 import ita.softserve.course_evaluation_analytics.entity.TeacherRateCounter;
 import ita.softserve.course_evaluation_analytics.entity.Users;
 import ita.softserve.course_evaluation_analytics.repository.TeacherRepository;
@@ -23,11 +24,21 @@ public class TeacherCounterServiceImpl implements TeacherCounterService {
 	}
 	
 	@Override
-	public List<TeacherRateCounter> getTeacherRate() {
+	public List<TeacherRateCounter> getTeachersRate() {
 		List<Long> teacherIds = teacherRepository.getAllTeacher();
 		List<TeacherRateCounter> teacherRateCounters = new ArrayList<>();
-		teacherIds.forEach(teacherId -> teacherRateCounters.add(new TeacherRateCounter(getTeacherName(teacherId), getTeacherCourses(teacherId), getTeachersRate(teacherId))));
+		teacherIds.forEach(teacherId -> teacherRateCounters.add(getTeacherRate(teacherId)));
 		return teacherRateCounters;
+	}
+	
+	@Override
+	public TeacherRateCounter getTeacherRate(long teacherId) {
+		return new TeacherRateCounter(teacherId, getTeacherName(teacherId), getTeacherCourses(teacherId), getTeachersRate(teacherId));
+	}
+	
+	@Override
+	public List<TeacherQuestionRate> getQuestionPatternRateByTeacherId(long teacherId) {
+		return teacherRepository.getQuestionPatternRateByTeacherId(teacherId);
 	}
 	
 	private List<Long> getTeacherCourses(Long teacherId) {

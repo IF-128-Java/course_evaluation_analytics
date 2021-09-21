@@ -6,17 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-import java.util.Map;
-
 @Data
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TeacherRateCounter {
-	private long teacherId;
-	private String teacherName;
-	private List<Long> courses;
-	private float teacherRate;
+public class TeacherQuestionRate {
+	private long questionId;
+	private String questionText;
+	private float rate;
 }
