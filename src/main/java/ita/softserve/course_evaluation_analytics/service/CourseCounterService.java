@@ -1,9 +1,9 @@
 package ita.softserve.course_evaluation_analytics.service;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository
+@Service
 public interface CourseCounterService {
-	Float getCourseRate(long courseId);
+    Float getCourseRate(long courseId);
 }
 
