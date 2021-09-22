@@ -1,8 +1,6 @@
 package ita.softserve.course_evaluation_analytics.service.impl;
 
-import ita.softserve.course_evaluation_analytics.entity.FeedbackInfo;
-import ita.softserve.course_evaluation_analytics.service.ExcelExporterService;
-import lombok.extern.slf4j.Slf4j;
+import ita.softserve.course_evaluation_analytics.entity.UserInfo;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,27 +12,23 @@ import org.springframework.stereotype.Service;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@Slf4j
-public class FeedbackExcelExporterServiceImpl implements ExcelExporterService {
 
+public class UserExcelExporterServiceImpl {
     private final XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    private final List<FeedbackInfo> feedbackInfos;
+    private final List<UserInfo> userInfoList;
 
-    public FeedbackExcelExporterServiceImpl(List<FeedbackInfo> feedbackInfoList) {
-        this.feedbackInfos = feedbackInfoList;
+    public UserExcelExporterServiceImpl(List<UserInfo> userInfoList) {
+        this.userInfoList = userInfoList;
         workbook = new XSSFWorkbook();
     }
 
     private void writeHeaderLine() {
-        sheet = workbook.createSheet("CourseFeedbackInfo");
+        sheet = workbook.createSheet("CourseUserInfo");
 
         Row row = sheet.createRow(0);
 
@@ -44,15 +38,11 @@ public class FeedbackExcelExporterServiceImpl implements ExcelExporterService {
         font.setFontHeight(12);
         style.setFont(font);
 
-        createCell(row, 0, "Feedback Description", style);
-        createCell(row, 1, "Start Date", style);
-        createCell(row, 2, "End Date", style);
-        createCell(row, 3, "Status", style);
-        createCell(row, 4, "Course Name", style);
-        createCell(row, 5, "Question Text", style);
-        createCell(row, 6, "Rate", style);
-        createCell(row, 7, "Student ID", style);
-        createCell(row, 8, "Student Email", style);
+        createCell(row, 0, "First Name", style);
+        createCell(row, 1, "Last Name", style);
+        createCell(row, 2, "Email", style);
+        createCell(row, 3, "Group Name", style);
+        createCell(row, 4, "Role Name", style);
 
     }
 
@@ -61,10 +51,6 @@ public class FeedbackExcelExporterServiceImpl implements ExcelExporterService {
         Cell cell = row.createCell(columnCount);
         if (value instanceof Integer) {
             cell.setCellValue((Integer) value);
-        } else if (value instanceof Boolean) {
-            cell.setCellValue((Boolean) value);
-        } else if (value instanceof LocalDateTime){
-            cell.setCellValue(String.valueOf(value));
         } else if (value instanceof Long) {
             cell.setCellValue((Long) value);
         }else {
@@ -81,24 +67,19 @@ public class FeedbackExcelExporterServiceImpl implements ExcelExporterService {
         font.setFontHeight(12);
         style.setFont(font);
 
-        for (FeedbackInfo feedbackInfo : feedbackInfos) {
+        for (UserInfo userInfo : userInfoList) {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
 
-            createCell(row, columnCount++, feedbackInfo.getFeedbackDescription(), style);
-            createCell(row, columnCount++, feedbackInfo.getStartDate(), style);
-            createCell(row, columnCount++, feedbackInfo.getEndDate(), style);
-            createCell(row, columnCount++, feedbackInfo.getStatus(), style);
-            createCell(row, columnCount++, feedbackInfo.getCourseName(), style);
-            createCell(row, columnCount++, feedbackInfo.getQuestionText(), style);
-            createCell(row, columnCount++, feedbackInfo.getRate(), style);
-            createCell(row, columnCount++, feedbackInfo.getStudentId(), style);
-            createCell(row, columnCount++, feedbackInfo.getEmail(), style);
+            createCell(row, columnCount++, userInfo.getFirstName(), style);
+            createCell(row, columnCount++, userInfo.getLastName(), style);
+            createCell(row, columnCount++, userInfo.getEmail(), style);
+            createCell(row, columnCount++, userInfo.getGroupName(), style);
+            createCell(row, columnCount++, userInfo.getRoleName(), style);
 
         }
     }
 
-    @Override
     public ByteArrayOutputStream export(HttpServletResponse response) throws IOException {
         writeHeaderLine();
         writeDataLines();
@@ -113,5 +94,4 @@ public class FeedbackExcelExporterServiceImpl implements ExcelExporterService {
 
         return baos;
     }
-
 }
