@@ -19,13 +19,11 @@ import java.util.Optional;
 public class TeacherRepositoryImpl implements TeacherRepository {
 	
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
 	public void setDataSource(@Qualifier("datasource") final DataSource dataSource) {
 		namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-		jdbcTemplate = new JdbcTemplate(dataSource);
-	}
+			}
 	
 	@Override
 	public Optional<Float> getTeachersRate(Long teacherId) {
@@ -39,8 +37,9 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 	
 	@Override
 	public List<Long> getAllTeacher() {
-		String sql = "SELECT u.id FROM users AS u INNER JOIN user_roles ur ON u.id = ur.user_id WHERE ur.role_id = 1";
-		return jdbcTemplate.queryForList(sql, Long.class);
+		String sql = "SELECT u.id FROM users AS u INNER JOIN user_roles ur ON u.id = ur.user_id WHERE ur.role_id = :id";
+		SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", 1L);
+		return namedParameterJdbcTemplate.queryForList(sql, namedParameters, Long.class);
 	}
 	
 	@Override
