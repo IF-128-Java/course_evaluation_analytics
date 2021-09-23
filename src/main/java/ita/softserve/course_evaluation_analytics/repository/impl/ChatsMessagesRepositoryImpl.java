@@ -17,8 +17,8 @@ public class ChatsMessagesRepositoryImpl implements ChatsMessagesRepository {
 
     @Override
     public List<ChatsMessages> getListOfMessagesByDays() {
-        String sql = "SELECT dt_start AS days, count(cm.created_at) FILTER ( WHERE cm.chat_room_id = 2 ) AS teachers_messages, " +
-                "count(cm.created_at) FILTER ( WHERE cm.chat_room_id != 2 ) AS groups_messages FROM " +
+        String sql = "SELECT dt_start AS days, count(cm.created_at) FILTER ( WHERE cm.chat_room_id = 3 ) AS teachers_messages, " +
+                "count(cm.created_at) FILTER ( WHERE cm.chat_room_id != 3 ) AS groups_messages FROM " +
                 "( SELECT dt_start, dt_start + INTERVAL '1 Day' dt_end FROM generate_series(current_date::timestamp " +
                 "- interval '30 days', current_date::timestamp, '1 Day') AS dt_start ) AS r LEFT OUTER JOIN chat_messages cm " +
                 "ON cm.created_at >= dt_start AND cm.created_at <  r.dt_end GROUP BY dt_start ORDER BY dt_start";

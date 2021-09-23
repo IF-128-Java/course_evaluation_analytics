@@ -1,8 +1,5 @@
 package ita.softserve.course_evaluation_analytics.entity;
 
-import lombok.Builder;
-import lombok.Data;
-
 import java.util.List;
 import java.util.Objects;
 
