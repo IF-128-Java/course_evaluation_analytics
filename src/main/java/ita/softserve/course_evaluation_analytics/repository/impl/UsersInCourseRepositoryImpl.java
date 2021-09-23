@@ -27,7 +27,7 @@ public class UsersInCourseRepositoryImpl implements UsersInCourseRepository {
     @Override
     public List<UsersInCourse> countUsersInCourse() {
         String sql = "SELECT course_name, COUNT(u.id) AS users_in_course FROM course c INNER JOIN course_group cg on c.id = cg.course_id " +
-                "INNER JOIN groups g on g.id = cg.group_id INNER JOIN users u on g.id = u.group_id group by course_name";
+                "INNER JOIN groups g on g.id = cg.group_id INNER JOIN users u on g.id = u.group_id group by course_name ORDER BY users_in_course";
         return namedParameterJdbcTemplate.query(sql, new UsersInCourseMapper());
     }
 }
