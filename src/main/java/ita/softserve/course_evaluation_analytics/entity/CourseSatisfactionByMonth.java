@@ -1,13 +1,13 @@
 package ita.softserve.course_evaluation_analytics.entity;
 
-public class CourseSatisfactionByMonth {
-    public CourseSatisfactionByMonth() {
-    }
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    public CourseSatisfactionByMonth(String monthName, int rate) {
-        this.monthName= monthName;
-        this.rate = rate;
-    }
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class CourseSatisfactionByMonth {
 
     private String monthName;
     private int rate;
