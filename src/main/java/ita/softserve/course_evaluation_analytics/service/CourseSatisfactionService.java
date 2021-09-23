@@ -26,7 +26,7 @@ public class CourseSatisfactionService {
 
     public List<CourseFeedbackSatisfaction> getSatisfactions() {
 
-        List<CourseFeedbackSatisfaction> coursesFeedbackSatisfaction=new ArrayList<CourseFeedbackSatisfaction>();
+        List<CourseFeedbackSatisfaction> coursesFeedbackSatisfaction=new ArrayList<>();
 
         List<Course> courses = analystRepository.getAllCourses();
 
@@ -69,7 +69,7 @@ public class CourseSatisfactionService {
 
 
                 }
-                avarageRate = sumRates/n;
+                if(n!=0){avarageRate = sumRates/n;}
                 courseSatisfactionByMonth.add(new CourseSatisfactionByMonth(temperary.getMonth().toString(), avarageRate));
             }
               else  courseSatisfactionByMonth.add(new CourseSatisfactionByMonth(temperary.getMonth().toString(), 0));
