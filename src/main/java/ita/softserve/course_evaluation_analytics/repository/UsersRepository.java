@@ -10,4 +10,5 @@ public interface UsersRepository {
 
     List<Role> findRoleByUserEmail(String email);
     Optional<Users> findByEmail(String email);
+    Users findUserById(Long id);
 }

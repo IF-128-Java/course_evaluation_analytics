@@ -40,5 +40,12 @@ public class UsersRepositoryImpl implements UsersRepository {
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("email", email);
         return Optional.ofNullable(DataAccessUtils.singleResult(namedParameterJdbcTemplate.query(sql, namedParameters, new UsersMapper())));
     }
-
+    
+    @Override
+    public Users findUserById(Long id) {
+        String sql = "SELECT u.* from users as u where u.id = :id";
+        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
+        return DataAccessUtils.singleResult(namedParameterJdbcTemplate.query(sql, namedParameters, new UsersMapper()));
+    }
+    
 }
