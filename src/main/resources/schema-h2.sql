@@ -1,0 +1,5 @@
+CREATE TABLE COURSE
+(
+    ID int NOT NULL PRIMARY KEY,
+    COURSE_NAME varchar(255)
+);
